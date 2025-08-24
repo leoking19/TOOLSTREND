@@ -1,659 +1,280 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0ea5e9" />
-  <meta name="description" content="Modern premium landing page template with product grid, services, reviews, blog, FAQ and contact form. Fast, responsive, SEO-ready." />
-  <title>Toolstrend — Premium Tools & Hardware</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ToolsTrend — Trending Industrial, Tools & Home Living (US)</title>
+  <meta name="description" content="Trending industrial, hardware, power tools, automotive and home living — curated for US buyers with trusted reviews, guides and deals." />
+  <!-- AdSense core script (your publisher ID) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9147023839991899"
+     crossorigin="anonymous"></script>
+
   <style>
-    :root{
-      --bg:#0b1020;         /* Deep navy */
-      --panel:#0f172a;      /* Slate */
-      --soft:#111827;       /* Gray-900 */
-      --muted:#94a3b8;      /* Slate-400 */
-      --text:#e5e7eb;       /* Gray-200 */
-      --primary:#0ea5e9;    /* Sky-500 */
-      --primary-600:#0284c7;/* Sky-600 */
-      --accent:#22c55e;     /* Green-500 */
-      --warn:#f59e0b;       /* Amber-500 */
-      --danger:#ef4444;     /* Red-500 */
-      --ring: 0 0 0 3px rgba(14,165,233,.35);
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(2,8,23,.35);
-    }
-    *{box-sizing: border-box}
-    html,body{margin:0}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif; background:linear-gradient(180deg,var(--bg),#0a122a 60%, #0b1a38); color:var(--text); line-height:1.55}
-    img{max-width:100%; display:block}
-    a{color:inherit; text-decoration:none}
-    .container{width:min(1200px,92%); margin-inline:auto}
-    .flex{display:flex}
-    .grid{display:grid}
-    .btn{display:inline-flex; align-items:center; gap:.6rem; padding:.9rem 1.1rem; border-radius:999px; background:var(--primary); color:#061424; font-weight:700; box-shadow:var(--shadow); transition:.2s transform,.2s filter}
-    .btn:hover{transform:translateY(-1px)}
-    .btn.secondary{background:#0b1a38; color:var(--text); border:1px solid #1f2a44}
-    .chip{display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .7rem; border:1px solid #20304d; border-radius:999px; color:#93c5fd; background:rgba(14,165,233,.08)}
-    .card{background:linear-gradient(180deg,#0b142b,#0c1732 70%); border:1px solid #1d2a4d; border-radius:var(--radius); box-shadow:var(--shadow)}
-    .glass{backdrop-filter: blur(8px); background:linear-gradient(180deg, rgba(13,25,52,.8), rgba(10,18,40,.6)); border:1px solid rgba(148,163,184,.15)}
-    .shadow{box-shadow:var(--shadow)}
-    .section{padding:80px 0}
-    .sub{color:var(--muted); font-weight:600; letter-spacing:.1em; text-transform:uppercase}
-    h1{font-size:clamp(2.2rem,5vw,3.6rem); line-height:1.12; margin:.4rem 0 1rem}
-    h2{font-size:clamp(1.6rem,3.5vw,2.4rem); line-height:1.2; margin:.2rem 0 1rem}
-    h3{font-size:1.15rem; margin:.2rem 0 .6rem}
-    p{color:#cbd5e1}
-    .muted{color:var(--muted)}
-    .badge{display:inline-flex; gap:.5rem; align-items:center; background:#081630; color:#93c5fd; border:1px solid #1b2b4a; padding:.45rem .7rem; border-radius:999px}
-
-    /* Header */
-    header{position:sticky; top:0; z-index:50; backdrop-filter: blur(10px)}
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:.8rem 0}
-    .nav .logo{display:flex; align-items:center; gap:.7rem; font-weight:800}
-    .logo svg{width:28px; height:28px}
-    .nav a{color:#dbeafe}
-    .nav ul{display:flex; gap:1.1rem; align-items:center}
-    .nav .cta{margin-left:6px}
-    .mobile-toggle{display:none; background:#0b1a38; border:1px solid #1f2a44; border-radius:10px; padding:.55rem}
-
-    /* Hero */
-    .hero{position:relative; padding:110px 0 80px; overflow:hidden}
-    .hero .grid{grid-template-columns:1.15fr .95fr; gap:40px}
-    .hero .eyebrow{display:inline-grid; grid-auto-flow:column; align-items:center; gap:.6rem}
-    .hero .stats{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:18px; margin-top:34px}
-    .stat{padding:16px; border-radius:14px; background:linear-gradient(180deg,#0b1a38, #0b142b); border:1px solid #1e2b4a}
-    .stat strong{font-size:1.4rem}
-    .hero-visual{position:relative}
-    .orb{position:absolute; inset:auto auto 10% -10%; width:280px; height:280px; background:radial-gradient(circle at 30% 30%, rgba(14,165,233,.6), transparent 60%), radial-gradient(circle at 70% 70%, rgba(34,197,94,.5), transparent 60%); filter: blur(40px); opacity:.55; pointer-events:none}
-    .hero-image{aspect-ratio: 4/3; border-radius:18px; border:1px solid #1a2747; background:linear-gradient(135deg,#0f1d3c,#0b1734); display:grid; place-items:center; overflow:hidden}
-    .hero-image svg{width:80%; max-width:520px; opacity:.95}
-
-    /* Feature grid */
-    .feature-grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:18px}
-    .feature{padding:20px}
-    .feature .icon{width:42px; height:42px; display:grid; place-items:center; border-radius:12px; background:#0b1a38; border:1px solid #20304d; margin-bottom:10px}
-
-    /* Product grid */
-    .product-grid{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:18px}
-    .product{overflow:hidden}
-    .product .thumb{aspect-ratio: 1/1; background:linear-gradient(135deg,#0e1a36,#0b1732); border-bottom:1px solid #1b274b; display:grid; place-items:center}
-    .price{display:flex; align-items:center; gap:.5rem}
-    .price .strike{text-decoration:line-through; color:#94a3b8}
-
-    /* Testimonials */
-    .carousel{position:relative}
-    .carousel-track{display:flex; gap:18px; overflow:auto; scroll-snap-type:x mandatory; padding-bottom:6px}
-    .carousel .item{flex:0 0 360px; scroll-snap-align:start}
-
-    /* Blog */
-    .blog-grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:18px}
-    .post .thumb{aspect-ratio: 16/9; background:linear-gradient(135deg,#0e1a36,#0b1732); border-bottom:1px solid #1b274b}
-
-    /* CTA Banner */
-    .cta-banner{display:grid; grid-template-columns:1.3fr .7fr; gap:28px; align-items:center}
-
-    /* Footer */
-    footer{border-top:1px solid #1b274b; margin-top:60px; padding:40px 0 80px}
-    .footer-grid{display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:24px}
-
-    /* Chips row */
-    .chips{display:flex; flex-wrap:wrap; gap:10px}
-
-    /* Responsive */
-    @media (max-width: 1024px){
-      .hero .grid, .cta-banner{grid-template-columns:1fr}
-      .product-grid{grid-template-columns:repeat(3, minmax(0,1fr))}
-      .blog-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
-      .feature-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
-      .footer-grid{grid-template-columns:1fr 1fr}
-    }
-    @media (max-width: 720px){
-      .nav ul{display:none}
-      .mobile-toggle{display:inline-flex}
-      .product-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
-      .blog-grid{grid-template-columns:1fr}
-      .feature-grid{grid-template-columns:1fr}
-      .footer-grid{grid-template-columns:1fr}
-      .section{padding:64px 0}
-    }
-    /* Utility */
-    .mt-1{margin-top:.25rem} .mt-2{margin-top:.5rem} .mt-3{margin-top:1rem} .mt-4{margin-top:1.5rem} .mt-5{margin-top:2rem}
-    .mb-0{margin-bottom:0} .mb-1{margin-bottom:.25rem} .mb-2{margin-bottom:.5rem} .mb-3{margin-bottom:1rem} .mb-4{margin-bottom:1.5rem} .mb-5{margin-bottom:2rem}
-    .row{display:flex; gap:10px; flex-wrap:wrap}
-    .center{place-items:center}
-    .right{justify-content:flex-end}
-    .w-full{width:100%}
-    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border-width:0}
-    .divider{height:1px; background:linear-gradient(90deg,transparent,#1b274b,transparent)}
-    .list-reset{padding-left:0; list-style:none}
-
-    /* Forms */
-    input, textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid #1f2a44; background:#0b1a38; color:var(--text)}
-    input:focus, textarea:focus{outline:none; box-shadow:var(--ring); border-color:#2b9cdb}
-    label{font-size:.9rem; color:#cbd5e1}
-    .input-group{display:grid; gap:8px}
+    :root{ --bg:#ffffff; --muted:#6b7280; --accent:#0ea5e9; --card:#ffffff; --border:#e6e9ef; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#0f172a;background:var(--bg);line-height:1.5}
+    .container{max-width:1180px;margin:0 auto;padding:18px}
+    header{background:#07122b;color:#fff;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+    .brand{display:flex;align-items:center;gap:12px;max-width:1180px;margin:0 auto;padding:0 18px}
+    .brand h1{font-size:1.25rem;margin:0}
+    .sub{color:#cfeffd;font-size:.95rem;opacity:.95;margin-top:4px}
+    .layout{display:flex;gap:18px;margin-top:20px}
+    main{flex:3;min-width:0}
+    aside{flex:1;min-width:260px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:16px}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .chip{background:#eef6fb;color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:600;font-size:.85rem}
+    h2{margin:0 0 12px 0;font-size:1.35rem}
+    p.muted{color:var(--muted);margin:0 0 12px 0}
+    .product{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:8px;border:1px solid #f0f3f6;margin-bottom:12px;background:#fff}
+    .product img{width:140px;height:92px;object-fit:cover;border-radius:8px}
+    .product h3{margin:0;font-size:1rem}
+    .btn{display:inline-block;padding:9px 12px;border-radius:8px;background:var(--accent);color:#012; font-weight:700;text-decoration:none}
+    .btn.secondary{background:#0b1a38;color:#fff;border:1px solid rgba(255,255,255,.04)}
+    .grid-blogs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .blog-card img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+    .blog-card h4{margin:10px 0 6px 0;font-size:1.05rem}
+    .muted-small{color:var(--muted);font-size:.95rem}
+    footer{margin-top:30px;padding:18px 0;color:var(--muted);text-align:center}
+    @media (max-width:900px){ .layout{flex-direction:column} .grid-blogs{grid-template-columns:1fr} aside{order:2} main{order:1} }
   </style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Toolstrend",
-    "url": "https://example.com",
-    "logo": "https://example.com/logo.png",
-    "sameAs": ["https://www.facebook.com/","https://www.instagram.com/","https://www.linkedin.com/"]
-  }
-  </script>
 </head>
 <body>
   <!-- Header -->
-  <header class="glass">
-    <div class="container nav">
-      <a href="#home" class="logo" aria-label="Toolstrend Home">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-          <path d="M6 21h12M9 21V8a3 3 0 0 1 6 0v13"/>
-          <path d="M3 10h18M12 3v3"/>
-        </svg>
-        <span>Toolstrend</span>
-      </a>
-      <nav aria-label="Primary">
-        <ul class="list-reset">
-          <li><a href="#features">Features</a></li>
-          <li><a href="#categories">Categories</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="row right">
-        <a class="btn secondary cta" href="#products">Shop Now</a>
-        <button class="mobile-toggle" aria-label="Open menu" id="mobileToggle">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
+  <header>
+    <div class="brand">
+      <div style="display:flex;flex-direction:column">
+        <h1>ToolsTrend</h1>
+        <div class="sub">Trending industrial, hardware & home living — curated for US buyers</div>
+      </div>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:10px">
+        <div class="chip">Trending Picks — Updated Weekly (US)</div>
       </div>
     </div>
-    <!-- Mobile menu -->
-    <div id="mobileMenu" class="container" hidden>
-      <div class="card" style="padding:12px; margin-bottom:8px">
-        <a class="btn w-full" style="justify-content:center" href="#products">Shop Now</a>
-      </div>
-      <div class="card" style="padding:12px">
-        <ul class="list-reset" style="display:grid; gap:8px">
-          <li><a href="#features">Features</a></li>
-          <li><a href="#categories">Categories</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
+
+    <!-- Header Ad (Top banner) -->
+    <div class="container" style="padding-top:14px;padding-bottom:6px;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-9147023839991899"
+           data-ad-slot="5790966770"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="container grid">
-      <div>
-        <div class="eyebrow">
-          <span class="chip">Trusted by 25k+ DIYers</span>
-          <span class="chip">Free US Shipping $50+</span>
-        </div>
-        <h1>Premium Tools & Hardware for Pros and Home Projects</h1>
-        <p class="mt-3">From submersible pumps to power tools, get industrial-grade performance with transparent pricing, expert support, and fast shipping across the United States.</p>
-        <div class="row mt-4">
-          <a href="#products" class="btn" aria-label="Browse Products">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3Z"/><path d="M16 8H8"/><circle cx="9" cy="20" r="1"/><circle cx="15" cy="20" r="1"/></svg>
-            Shop Bestsellers
-          </a>
-          <a href="#features" class="btn secondary" aria-label="See features">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-            Why Choose Us
-          </a>
-        </div>
-        <div class="stats">
-          <div class="stat card"><strong>4.9★</strong><div class="muted">Average rating</div></div>
-          <div class="stat card"><strong>72h</strong><div class="muted">Delivery time</div></div>
-          <div class="stat card"><strong>10yr</strong><div class="muted">Warranty plans</div></div>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-image card">
-          <!-- Placeholder product illustration -->
-          <svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hero illustration">
-            <defs>
-              <linearGradient id="g1" x1="0" x2="1">
-                <stop offset="0" stop-color="#0ea5e9" stop-opacity=".25"/>
-                <stop offset="1" stop-color="#22c55e" stop-opacity=".25"/>
-              </linearGradient>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#g1)"/>
-            <g fill="none" stroke="#7dd3fc" stroke-opacity=".6" stroke-width="2">
-              <rect x="70" y="160" rx="14" width="220" height="130"/>
-              <path d="M290 225h240"/>
-              <path d="M290 205h160" stroke="#86efac"/>
-              <path d="M290 245h190" stroke="#fca5a5"/>
-              <circle cx="150" cy="225" r="30"/>
-              <path d="M110 110h160v30H110z"/>
-            </g>
-          </svg>
-        </div>
-        <div class="orb" aria-hidden="true"></div>
-      </div>
-    </div>
-  </section>
+  <div class="container">
+    <div class="layout">
+      <!-- MAIN -->
+      <main>
+        <!-- Intro / Trust -->
+        <section class="card">
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+            <div style="flex:1;min-width:0">
+              <h2>Trending Industrial & Home Solutions — Tools, Automotive & More (US)</h2>
+              <p class="muted">Curated trending topics and product recommendations in industrial, hardware & power tools, automotive, and home living — built for a United States audience with trusted reviews and buying guides.</p>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <a class="btn" href="#products">Shop Picks</a>
+              <a class="btn secondary" href="blog.html">Latest Guides</a>
+            </div>
+          </div>
 
-  <!-- Trust badges -->
-  <div class="container row chips" aria-label="Trust badges">
-    <span class="badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> 2-Year Warranty</span>
-    <span class="badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18"/><path d="M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0Z"/></svg> 24/7 Support</span>
-    <span class="badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3Z"/></svg> Free Returns</span>
-    <span class="badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Secure Checkout</span>
+          <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+            <div class="chip">US shipping</div>
+            <div class="chip">Trusted reviews</div>
+            <div class="chip">Top brands</div>
+            <div class="chip">Free returns</div>
+          </div>
+        </section>
+
+        <!-- Products (small list) -->
+        <section id="products" class="card">
+          <h2>Top Trending Products</h2>
+
+          <div class="product">
+            <img src="https://images.pexels.com/photos/305564/pexels-photo-305564.jpeg?auto=compress&cs=tinysrgb&h=450" alt="Submersible pump - industrial">
+            <div style="flex:1;min-width:0">
+              <h3>Hydro Pro 1.5HP Submersible Pump</h3>
+              <p class="muted-small">High head, energy-efficient submersible pump — popular with contractors and farms.</p>
+              <div style="margin-top:8px">
+                <a class="btn" href="https://amzn.to/4fRpH1p" target="_blank" rel="nofollow noopener">Buy on Amazon</a>
+                <a class="btn secondary" href="#contact" style="margin-left:8px">Enquire</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="product">
+            <img src="https://images.pexels.com/photos/1549311/pexels-photo-1549311.jpeg?auto=compress&cs=tinysrgb&h=450" alt="Cordless drill kit">
+            <div style="flex:1;min-width:0">
+              <h3>18V Brushless Drill Driver Kit</h3>
+              <p class="muted-small">Long-life batteries, fast charger — one of the most searched cordless drills in 2025.</p>
+              <div style="margin-top:8px">
+                <a class="btn" href="https://amzn.to/4fRpH1p" target="_blank" rel="nofollow noopener">Buy on Amazon</a>
+                <a class="btn secondary" href="#contact" style="margin-left:8px">Enquire</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mid content ad -->
+          <div style="margin:16px 0">
+            <ins class="adsbygoogle"
+                 style="display:block; text-align:center;"
+                 data-ad-layout="in-article"
+                 data-ad-format="fluid"
+                 data-ad-client="ca-pub-9147023839991899"
+                 data-ad-slot="3352505699"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+
+          <div class="product">
+            <img src="https://images.pexels.com/photos/38325/pexels-photo-38325.jpeg?auto=compress&cs=tinysrgb&h=450" alt="Angle grinder">
+            <div style="flex:1;min-width:0">
+              <h3>850W Angle Grinder 4.5"</h3>
+              <p class="muted-small">Compact with quick-guard, ideal for metal and masonry work.</p>
+              <div style="margin-top:8px">
+                <a class="btn" href="https://amzn.to/4fRpH1p" target="_blank" rel="nofollow noopener">Buy on Amazon</a>
+                <a class="btn secondary" href="#contact" style="margin-left:8px">Enquire</a>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Latest Blogs -->
+        <section class="card">
+          <h2>Latest Blogs & News</h2>
+          <p class="muted">Fresh guides and trending lists to help you choose the right gear — updated weekly.</p>
+
+          <div class="grid-blogs" style="margin-top:12px;">
+            <!-- Blog 1 -->
+            <article class="blog-card card">
+              <a href="blog.html#post1" style="text-decoration:none;color:inherit">
+                <img src="https://images.pexels.com/photos/4792479/pexels-photo-4792479.jpeg?auto=compress&cs=tinysrgb&h=650" alt="Power tools workshop USA">
+                <h4>Top 10 Power Tools Every Workshop in the USA Needs (2025)</h4>
+                <p class="muted-small">From cordless drills to heavy grinders — these are the essential tools pros and serious DIYers are buying in 2025.</p>
+                <div style="margin-top:8px"><span class="btn">Read More</span></div>
+              </a>
+            </article>
+
+            <!-- Blog 2 -->
+            <article class="blog-card card">
+              <a href="blog.html#post2" style="text-decoration:none;color:inherit">
+                <img src="https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&h=650" alt="Car road trip accessories">
+                <h4>5 Must-Have Car Accessories for Road Trips in 2025</h4>
+                <p class="muted-small">Make long drives more comfortable and safer with these trending accessories.</p>
+                <div style="margin-top:8px"><span class="btn">Read More</span></div>
+              </a>
+            </article>
+
+            <!-- Blog 3 -->
+            <article class="blog-card card">
+              <a href="blog.html#post3" style="text-decoration:none;color:inherit">
+                <img src="https://images.pexels.com/photos/439816/pexels-photo-439816.jpeg?auto=compress&cs=tinysrgb&h=650" alt="Smart home gadgets">
+                <h4>Smart Home Gadgets That Are Changing American Homes</h4>
+                <p class="muted-small">From voice assistants to smart vacuums — the gadgets improving convenience and safety in US homes.</p>
+                <div style="margin-top:8px"><span class="btn">Read More</span></div>
+              </a>
+            </article>
+
+            <!-- Blog 4 -->
+            <article class="blog-card card">
+              <a href="blog.html#post4" style="text-decoration:none;color:inherit">
+                <img src="https://images.pexels.com/photos/460799/pexels-photo-460799.jpeg?auto=compress&cs=tinysrgb&h=650" alt="Using cordless drills safely">
+                <h4>Beginner’s Guide to Using Cordless Drills Safely</h4>
+                <p class="muted-small">Safety tips, proper bits, and maintenance advice for new drill owners.</p>
+                <div style="margin-top:8px"><span class="btn">Read More</span></div>
+              </a>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- Contact quick card -->
+        <section id="contact" class="card">
+          <h2>Get a Custom Quote</h2>
+          <p class="muted">Need help selecting the right pump, tool or accessory? Send us a quick message and our specialists will respond.</p>
+          <form onsubmit="event.preventDefault(); alert('Thanks — we will contact you shortly (demo).');" style="margin-top:12px">
+            <div style="display:flex;gap:8px;margin-bottom:10px">
+              <input type="text" name="name" placeholder="Your name" required style="flex:1;padding:10px;border-radius:8px;border:1px solid var(--border)">
+              <input type="email" name="email" placeholder="you@example.com" required style="flex:1;padding:10px;border-radius:8px;border:1px solid var(--border)">
+            </div>
+            <textarea name="message" rows="4" placeholder="Tell us what you need…" style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--border)"></textarea>
+            <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">
+              <label style="color:var(--muted);font-size:.9rem"><input type="checkbox" required> I agree to terms</label>
+              <button class="btn" type="submit">Send Request</button>
+            </div>
+          </form>
+        </section>
+
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="card">
+          <h3>Categories</h3>
+          <ul style="padding-left:16px;margin:8px 0;color:var(--muted)">
+            <li style="margin:8px 0"><a href="#products">Industrial Tools</a></li>
+            <li style="margin:8px 0"><a href="#products">Hardware & Power Tools</a></li>
+            <li style="margin:8px 0"><a href="#products">Automotive Essentials</a></li>
+            <li style="margin:8px 0"><a href="#products">Home Living</a></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Top Searches (US)</h3>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <a href="#" style="text-decoration:none;color:#0b2444">Best submersible pumps 2025</a>
+            <a href="#" style="text-decoration:none;color:#0b2444">Cordless drill kit reviews</a>
+            <a href="#" style="text-decoration:none;color:#0b2444">Automotive toolkits for pros</a>
+          </div>
+        </div>
+
+        <!-- Sidebar Ad (uses header slot id for now) -->
+        <div class="card" style="text-align:center">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-9147023839991899"
+               data-ad-slot="5790966770"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <div class="card">
+          <h3>Subscribe</h3>
+          <p class="muted-small">Get 10% off your first order and weekly trending picks.</p>
+          <form onsubmit="event.preventDefault(); alert('Subscribed (demo)');" style="display:flex;gap:8px;flex-direction:column">
+            <input type="email" placeholder="you@example.com" required style="padding:10px;border-radius:8px;border:1px solid var(--border)">
+            <button class="btn" type="submit">Join Newsletter</button>
+          </form>
+        </div>
+
+      </aside>
+    </div>
+
+    <footer>
+      <div style="max-width:1180px;margin:0 auto;padding:20px">
+        <!-- Footer Ad (autorelaxed) -->
+        <div style="margin-bottom:12px">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-format="autorelaxed"
+               data-ad-client="ca-pub-9147023839991899"
+               data-ad-slot="3164803431"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <div style="color:var(--muted);font-size:.95rem">
+          © <span id="year"></span> ToolsTrend — Trending Industrial, Automotive & Home Living Products (US). All rights reserved.
+        </div>
+      </div>
+    </footer>
   </div>
 
-  <!-- Features -->
-  <section id="features" class="section">
-    <div class="container">
-      <p class="sub">Why Toolstrend</p>
-      <h2>Industrial quality, small-shop care</h2>
-      <p class="mt-2 muted">We hand-pick dependable equipment for contractors, facilities, and serious DIYers — and back it with real humans.</p>
-      <div class="feature-grid mt-4">
-        <article class="feature card">
-          <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v14H3z"/><path d="M8 21h8"/></svg></div>
-          <h3>Direct Import Pricing</h3>
-          <p>Skip the middlemen. We import leading brands and pass the savings to you.</p>
-        </article>
-        <article class="feature card">
-          <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M5 8l7-7 7 7"/></svg></div>
-          <h3>Built to Last</h3>
-          <p>Components are tested to industrial standards with generous warranties.</p>
-        </article>
-        <article class="feature card">
-          <div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5-5 5 5"/></svg></div>
-          <h3>Fast, Free Shipping</h3>
-          <p>US delivery in 2–4 days on most orders. Real-time tracking included.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Categories -->
-  <section id="categories" class="section">
-    <div class="container">
-      <p class="sub">Shop by Category</p>
-      <h2>Power up every project</h2>
-      <div class="product-grid mt-3">
-        <a href="#products" class="product card">
-          <div class="thumb center"><span class="chip">Submersible Pumps</span></div>
-          <div style="padding:14px">
-            <h3>Pumps & Motors</h3>
-            <p class="muted">Borewell, drainage, booster, and more.</p>
-          </div>
-        </a>
-        <a href="#products" class="product card">
-          <div class="thumb center"><span class="chip">Cordless</span></div>
-          <div style="padding:14px">
-            <h3>Power Tools</h3>
-            <p class="muted">Drills, drivers, angle grinders, kits.</p>
-          </div>
-        </a>
-        <a href="#products" class="product card">
-          <div class="thumb center"><span class="chip">Industrial</span></div>
-          <div style="padding:14px">
-            <h3>Compressors</h3>
-            <p class="muted">Silent, oil-free, shop, portable.</p>
-          </div>
-        </a>
-        <a href="#products" class="product card">
-          <div class="thumb center"><span class="chip">Safety</span></div>
-          <div style="padding:14px">
-            <h3>Accessories</h3>
-            <p class="muted">Bits, blades, PPE, and spares.</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Products -->
-  <section id="products" class="section">
-    <div class="container">
-      <p class="sub">Bestsellers</p>
-      <h2>Top picks this week</h2>
-      <div class="row mt-3" style="gap:8px">
-        <button class="chip" data-filter="all">All</button>
-        <button class="chip" data-filter="pumps">Pumps</button>
-        <button class="chip" data-filter="tools">Tools</button>
-        <button class="chip" data-filter="accessories">Accessories</button>
-      </div>
-      <div class="product-grid mt-4" id="productGrid">
-        <!-- Product Card Template -->
-        <article class="product card" data-cat="pumps">
-          <div class="thumb"><img src="https://images.unsplash.com/photo-1605478482599-0f9b86795164?q=80&w=1200&auto=format&fit=crop" alt="Stainless submersible pump" loading="lazy"></div>
-          <div style="padding:14px">
-            <h3>Hydro Pro 1.5HP Submersible Pump</h3>
-            <p class="muted">High head, energy-efficient, 100% copper winding.</p>
-            <div class="row mt-2" style="justify-content:space-between; align-items:center">
-              <div class="price"><strong>$289</strong> <span class="strike">$349</span></div>
-              <a class="btn" href="#contact">Enquire</a>
-            </div>
-          </div>
-        </article>
-        <article class="product card" data-cat="tools">
-          <div class="thumb"><img src="https://images.unsplash.com/photo-1519222970733-f546218fa6d7?q=80&w=1200&auto=format&fit=crop" alt="Cordless drill driver" loading="lazy"></div>
-          <div style="padding:14px">
-            <h3>18V Brushless Drill Driver Kit</h3>
-            <p class="muted">2 batteries, fast charger, 60Nm torque.</p>
-            <div class="row mt-2" style="justify-content:space-between; align-items:center">
-              <div class="price"><strong>$159</strong> <span class="strike">$189</span></div>
-              <a class="btn" href="#contact">Enquire</a>
-            </div>
-          </div>
-        </article>
-        <article class="product card" data-cat="tools">
-          <div class="thumb"><img src="https://images.unsplash.com/photo-1600209142003-ed4e14f3c008?q=80&w=1200&auto=format&fit=crop" alt="Angle grinder" loading="lazy"></div>
-          <div style="padding:14px">
-            <h3>850W Angle Grinder 4.5"</h3>
-            <p class="muted">Compact body, quick-guard, includes 3 discs.</p>
-            <div class="row mt-2" style="justify-content:space-between; align-items:center">
-              <div class="price"><strong>$49</strong> <span class="strike">$69</span></div>
-              <a class="btn" href="#contact">Enquire</a>
-            </div>
-          </div>
-        </article>
-        <article class="product card" data-cat="accessories">
-          <div class="thumb"><img src="https://images.unsplash.com/photo-1532007271951-c48776093416?q=80&w=1200&auto=format&fit=crop" alt="Safety gear" loading="lazy"></div>
-          <div style="padding:14px">
-            <h3>Pro PPE Safety Pack</h3>
-            <p class="muted">ANSI-rated goggles, gloves, ear protection.</p>
-            <div class="row mt-2" style="justify-content:space-between; align-items:center">
-              <div class="price"><strong>$39</strong> <span class="strike">$59</span></div>
-              <a class="btn" href="#contact">Enquire</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Reviews -->
-  <section id="reviews" class="section">
-    <div class="container">
-      <p class="sub">Reviews</p>
-      <h2>Loved by pros & homeowners</h2>
-      <div class="carousel mt-3">
-        <div class="carousel-track" aria-label="Customer testimonials">
-          <article class="item card" style="padding:18px">
-            <div class="row" style="align-items:center; gap:10px">
-              <img src="https://i.pravatar.cc/64?img=12" alt="Avatar" width="44" height="44" style="border-radius:50%" loading="lazy"/>
-              <strong>Marcus R.</strong>
-              <span class="muted">Contractor</span>
-            </div>
-            <p class="mt-2">“We swapped to Hydro Pro pumps on a hotel project — solid build, quiet, and great support.”</p>
-            <div class="row" aria-label="Rating">
-              <span>★★★★★</span>
-            </div>
-          </article>
-          <article class="item card" style="padding:18px">
-            <div class="row" style="align-items:center; gap:10px">
-              <img src="https://i.pravatar.cc/64?img=21" alt="Avatar" width="44" height="44" style="border-radius:50%" loading="lazy"/>
-              <strong>Sara P.</strong>
-              <span class="muted">Homeowner</span>
-            </div>
-            <p class="mt-2">“The cordless kit is a beast. Battery life is insane and shipping was quick.”</p>
-            <div class="row" aria-label="Rating">
-              <span>★★★★★</span>
-            </div>
-          </article>
-          <article class="item card" style="padding:18px">
-            <div class="row" style="align-items:center; gap:10px">
-              <img src="https://i.pravatar.cc/64?img=36" alt="Avatar" width="44" height="44" style="border-radius:50%" loading="lazy"/>
-              <strong>Devon K.</strong>
-              <span class="muted">Facility Manager</span>
-            </div>
-            <p class="mt-2">“Pricing is fair and service is responsive. We’ll be returning for quarterly supplies.”</p>
-            <div class="row" aria-label="Rating">
-              <span>★★★★★</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Blog -->
-  <section id="blog" class="section">
-    <div class="container">
-      <p class="sub">From the Blog</p>
-      <h2>Tips, comparisons & maintenance</h2>
-      <div class="blog-grid mt-3">
-        <article class="post card">
-          <div class="thumb"></div>
-          <div style="padding:14px">
-            <h3>Submersible vs. Jet Pumps — Which is Right?</h3>
-            <p class="muted">Understand head, flow rate, and efficiency for your application.</p>
-            <a class="btn secondary mt-2" href="#">Read</a>
-          </div>
-        </article>
-        <article class="post card">
-          <div class="thumb"></div>
-          <div style="padding:14px">
-            <h3>Power Tool Battery Guide (2025)</h3>
-            <p class="muted">The differences between 18V and 20V Max, explained clearly.</p>
-            <a class="btn secondary mt-2" href="#">Read</a>
-          </div>
-        </article>
-        <article class="post card">
-          <div class="thumb"></div>
-          <div style="padding:14px">
-            <h3>Shop Safety Checklist You Can Print</h3>
-            <p class="muted">Quick wins to reduce downtime and prevent injuries.</p>
-            <a class="btn secondary mt-2" href="#">Read</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="section">
-    <div class="container">
-      <p class="sub">FAQ</p>
-      <h2>Answers to common questions</h2>
-      <details class="card mt-3" style="padding:16px">
-        <summary><strong>Do you ship across the United States?</strong></summary>
-        <p class="mt-2">Yes, we ship to all 48 contiguous states. Orders over $50 ship free via ground.</p>
-      </details>
-      <details class="card mt-2" style="padding:16px">
-        <summary><strong>Can I request a bulk quote?</strong></summary>
-        <p class="mt-2">Absolutely. Use the contact form and select “Bulk/Wholesale.” We’ll reply within one business day.</p>
-      </details>
-      <details class="card mt-2" style="padding:16px">
-        <summary><strong>What warranty options do you offer?</strong></summary>
-        <p class="mt-2">All products include 1–2 year manufacturer warranty. Extended protection up to 10 years is available on select items.</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- CTA Banner -->
-  <section class="section">
-    <div class="container cta-banner card" style="padding:18px">
-      <div>
-        <p class="sub">Limited-time</p>
-        <h2>Get 10% off your first order</h2>
-        <p class="muted">Join our newsletter for exclusive deals, how‑to guides, and product launches.</p>
-        <form class="row mt-3" id="newsletterForm" onsubmit="return false" aria-label="Newsletter form">
-          <input type="email" name="email" placeholder="you@example.com" aria-label="Email" required>
-          <button class="btn" id="joinBtn">Join Free</button>
-        </form>
-        <p id="newsletterMsg" class="mt-2 muted" role="status"></p>
-      </div>
-      <div class="card center" style="padding:18px">
-        <h3 class="mb-1">Need expert advice?</h3>
-        <p class="muted mb-3">Chat with a product specialist for sizing, installation, and maintenance tips.</p>
-        <a href="#contact" class="btn">Talk to an Expert</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="section">
-    <div class="container">
-      <p class="sub">Contact</p>
-      <h2>Get a custom quote</h2>
-      <div class="grid" style="grid-template-columns:1.1fr .9fr; gap:18px">
-        <form class="card" style="padding:18px" id="contactForm" onsubmit="return false">
-          <div class="grid" style="grid-template-columns:1fr 1fr; gap:12px">
-            <div class="input-group">
-              <label for="name">Name</label>
-              <input id="name" name="name" placeholder="Your name" required>
-            </div>
-            <div class="input-group">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" required>
-            </div>
-          </div>
-          <div class="grid mt-2" style="grid-template-columns:1fr 1fr; gap:12px">
-            <div class="input-group">
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone" placeholder="(555) 555-5555">
-            </div>
-            <div class="input-group">
-              <label for="type">Project Type</label>
-              <input id="type" name="type" placeholder="Residential / Commercial / Industrial">
-            </div>
-          </div>
-          <div class="input-group mt-2">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell us what you need…"></textarea>
-          </div>
-          <div class="row mt-3" style="justify-content:space-between; align-items:center">
-            <label class="muted"><input type="checkbox" required> I agree to the terms and privacy policy</label>
-            <button class="btn" id="sendBtn">Send Request</button>
-          </div>
-          <p id="contactMsg" class="mt-2 muted" role="status"></p>
-        </form>
-        <aside class="card" style="padding:18px">
-          <h3>US Sales & Support</h3>
-          <p class="mt-1 muted">Mon–Fri, 8:00–18:00 (EST)</p>
-          <div class="divider mt-3"></div>
-          <ul class="list-reset" style="display:grid; gap:10px; margin-top:12px">
-            <li class="row" style="align-items:center; gap:10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.11 3.18 2 2 0 0 1 5.11 1h3a2 2 0 0 1 2 1.72 12.66 12.66 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L9 9a16 16 0 0 0 6 6l1.36-1.36a2 2 0 0 1 2.11-.45 12.66 12.66 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg> +1 (800) 555‑0199</li>
-            <li class="row" style="align-items:center; gap:10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1 3.7-6.4"/></svg> support@toolstrend.com</li>
-            <li class="row" style="align-items:center; gap:10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> 1200 Market St, San Francisco, CA</li>
-          </ul>
-          <div class="divider mt-3"></div>
-          <p class="mt-3 muted">Looking for wholesale? Email <a href="#">sales@toolstrend.com</a> with your requirements.</p>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container footer-grid">
-      <div>
-        <div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 21h12M9 21V8a3 3 0 0 1 6 0v13"/><path d="M3 10h18M12 3v3"/></svg><strong>Toolstrend</strong></div>
-        <p class="mt-2 muted">Your trusted source for pumps, tools, and industrial supplies.</p>
-        <div class="row mt-3">
-          <a class="chip" href="#">Facebook</a>
-          <a class="chip" href="#">Instagram</a>
-          <a class="chip" href="#">LinkedIn</a>
-        </div>
-      </div>
-      <div>
-        <h3>Shop</h3>
-        <ul class="list-reset mt-2" style="display:grid; gap:8px">
-          <li><a href="#categories">Categories</a></li>
-          <li><a href="#products">Bestsellers</a></li>
-          <li><a href="#faq">Shipping</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Company</h3>
-        <ul class="list-reset mt-2" style="display:grid; gap:8px">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Press</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Legal</h3>
-        <ul class="list-reset mt-2" style="display:grid; gap:8px">
-          <li><a href="#">Privacy</a></li>
-          <li><a href="#">Terms</a></li>
-          <li><a href="#">Returns</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="container" style="margin-top:24px; color:#94a3b8">© <span id="year"></span> Toolstrend. All rights reserved.</div>
-  </footer>
-
-  <!-- Back to top -->
-  <button id="toTop" class="btn" aria-label="Back to top" style="position:fixed; right:18px; bottom:18px; display:none">▲</button>
-
   <script>
-    // Mobile menu toggle
-    const toggle = document.getElementById('mobileToggle');
-    const menu = document.getElementById('mobileMenu');
-    toggle?.addEventListener('click', () => {
-      const hidden = menu.hasAttribute('hidden');
-      if(hidden) menu.removeAttribute('hidden'); else menu.setAttribute('hidden','');
-    });
-
-    // Smooth scroll for in-page links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id=a.getAttribute('href').slice(1);
-        const el=document.getElementById(id);
-        if(el){
-          e.preventDefault();
-          el.scrollIntoView({behavior:'smooth', block:'start'});
-          if(!menu.hasAttribute('hidden')) menu.setAttribute('hidden','');
-        }
-      });
-    });
-
-    // Filter products
-    document.querySelectorAll('[data-filter]').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        const cat=btn.dataset.filter;
-        document.querySelectorAll('#productGrid .product').forEach(card=>{
-          card.style.display=(cat==='all'|| card.dataset.cat===cat)?'block':'none';
-        })
-      })
-    })
-
-    // Newsletter mock submit
-    const nForm=document.getElementById('newsletterForm');
-    const nMsg=document.getElementById('newsletterMsg');
-    nForm?.addEventListener('submit',()=>{
-      const email=nForm.email.value.trim();
-      const ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      nMsg.textContent = ok? 'Thanks! Your 10% code is on the way to '+email : 'Please enter a valid email address.';
-      nMsg.style.color = ok? '#86efac':'#fca5a5';
-    })
-
-    // Contact mock submit
-    const cForm=document.getElementById('contactForm');
-    const cMsg=document.getElementById('contactMsg');
-    cForm?.addEventListener('submit',()=>{
-      const required=[...cForm.querySelectorAll('[required]')];
-      const ok=required.every(i=>i.value.trim().length>1);
-      cMsg.textContent = ok? 'Thanks! A specialist will reach out shortly.' : 'Please fill the required fields.';
-      cMsg.style.color = ok? '#86efac':'#fca5a5';
-    })
-
-    // Back to top
-    const toTop=document.getElementById('toTop');
-    window.addEventListener('scroll',()=>{
-      toTop.style.display = window.scrollY>600 ? 'inline-flex':'none';
-    });
-    toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-
-    // Year
+    // small utilities
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
